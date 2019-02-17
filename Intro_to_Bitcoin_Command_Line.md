@@ -1,7 +1,7 @@
 # Assignment
 This is assignment is structured to help you become familiar with blockchains and how they work, specifically Bitcoin.  Bitcoin uses a mechanism of unspent transaction outputs (UTXOs) for keeping track of values on the blockchain.  You will become familiar with wallets, address, private keys, signing transactions, as well as the UTXO model.  Through out this excercise there will be a number of ***Assignment Deliverable XX:*** . This will tell you what you need to turn in at the end of the assignment.  If there are more than one items required for that deliverable add a blank line between them. The format of the submitted work should be a text file with you name, date, assignment name, and UT ID. There should be sections of indicated by Assignment Deliverable XX: followed by the deliverable information.  For example:
 
-Karl, Kreder            01/25/2019             Intro_to_Bitcoin_Command_Line            UTID
+Alan, Orwick            01/25/2019             Intro_to_Bitcoin_Command_Line            UTID
 
 Assignment Deliverable 1:
 
@@ -220,7 +220,7 @@ bc getwalletinfo
 Before we can do anything with 
 ```BASH
 $ bitcoin-cli getnewaddress "" legacy
-2Mz6bRRUV5kfDUv87FFaPAgqMECDuMQn9ta
+mzM63a4RVjmAX8Q3CLaioxAd25QUPp5uXd
 ```
 Now that you have a wallet, you will need to get an address from your wallet.  The wallet in this case is a hierarchical deterministic (HD) wallet which you can find out more about by reading Bitcoin Improvement Proposal (BIP) 32 https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki . 
 
@@ -240,7 +240,7 @@ These commands clear the NEW_ADDRESS_1 variable, then fills it with the results 
 You can then use your shell's echo command to look at your (new) address:
 ```BASH
 $ echo $NEW_ADDRESS_1
-2Mz6bRRUV5kfDUv87FFaPAgqMECDuMQn9ta
+mzM63a4RVjmAX8Q3CLaioxAd25QUPp5uXd
 ```
 
 ## Get some 'testnet' Bitcoin
@@ -301,7 +301,7 @@ NEW_ADDRESS_2=$(bitcoin-cli getnewaddress "" legacy)
 ```
 ```BASH
 $ echo $NEW_ADDRESS_1
-mhpt1x5Ro8SSMAQrkXwCj4F6sZd1xL9nsT
+mzM63a4RVjmAX8Q3CLaioxAd25QUPp5uXd
 ```
 If you search for this value in your wallet file you should find that it appears in the line with `hdkeypath=m/0'/0'/1'`.  This is the second address in your HD wallet.  You can use address in Bitcoin multiple times, however privacy is better perseved if addresses are not reused. This is one of the reasons for an HD wallet.  If you look at the top of the file you will see that there is similar to:
 
@@ -319,13 +319,13 @@ The heart of Bitcoin, blockchain, and any cryptocurrency is signing messages wit
 In addition to being able to sign Bitcoin messages, you can also use the same keypairs to sign any abitrary message.  This can be done using the following:
 
 ```BASH
-$ bc signmessage "mhpt1x5Ro8SSMAQrkXwCj4F6sZd1xL9nsT" "Hello, Bitcoin!"
+$ bc signmessage "mzM63a4RVjmAX8Q3CLaioxAd25QUPp5uXd" "Hello, Bitcoin!"
 H9v014McOc0+ESiyWMWJ2lBcGi+Vd+O0/IqSR0mdt15IEK7z158PKkD8JeRe5j4n29+Gyu2m5F3qPWwHQuAPS90=
 ```
 The veracity of the message can be checked by using `verifymessage "address" "signeddata" "message"`.
 
 ```BASH
-$ bc verifymessage "mhpt1x5Ro8SSMAQrkXwCj4F6sZd1xL9nsT" "H9v014McOc0+ESiyWMWJ2lBcGi+Vd+O0/IqSR0mdt15IEK7z158PKkD8JeRe5j4n29+Gyu2m5F3qPWwHQuAPS90=" "Hello, Bitcoin"
+$ bc verifymessage "mzM63a4RVjmAX8Q3CLaioxAd25QUPp5uXd" "H9v014McOc0+ESiyWMWJ2lBcGi+Vd+O0/IqSR0mdt15IEK7z158PKkD8JeRe5j4n29+Gyu2m5F3qPWwHQuAPS90=" "Hello, Bitcoin"
 true
 ```
 
@@ -374,7 +374,7 @@ Now that you have your wallet setup and you have some testnet Bitcoin lets go ah
 You can send money simply by:
 
 ```BASH
-$ bc sendtoaddress mgct4AqGBPNxigwWnbZnJLL8YpxTEkF3eA 0.01
+$ bc sendtoaddress mzM63a4RVjmAX8Q3CLaioxAd25QUPp5uXd 0.01
 49377bf7e2d6524ebaeef8eec67db3fe22dc57dcced9f63d5bd89e021b983edb
 ```
 The result is the transaction ID.  You can learn more about the transaction ID by using:
